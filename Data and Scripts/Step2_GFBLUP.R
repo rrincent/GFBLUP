@@ -83,7 +83,7 @@ for (i in loop.start:loop.end){
         
         
         mod_gblup <- mmer(y~1,random = ~vsr(id,Gu=K),rcov = ~units,data = phen_na, verbose = F,tolParInv = 1)
-        if(is.vector(mod_gblup)){predictive_abilities$GF_BLUP[b] <- NA} else {
+        if(is.vector(mod_gblup)){predictive_abilities$G_BLUP[b] <- NA} else {
           pred_gblup <- mod_gblup$U$`u:id`$y
           pred_gblup <- pred_gblup[match(as.character(phen$id),as.character(names(pred_gblup)))]#sommer tends to reorder characters. we do to this make sure the order is good.
           predictive_abilities$GBLUP[b] <- cor(pred_gblup[index],phen[index,3],use = "na.or.complete") #pearson cor=predictive ability
